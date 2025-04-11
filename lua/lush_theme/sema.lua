@@ -1,6 +1,4 @@
 -- a port of the "sema" vscode theme for neovim
----@diagnostic disable: undefined-global
-
 --
 -- Built with,
 --
@@ -17,50 +15,52 @@
 --
 
 local lush = require('lush')
+local palette = require('sema.palette')
 local hsl = lush.hsl
 
 local colors = {
-    bg = hsl("#0F0F0F"),
-    fg = hsl("#D6D6D6"),
-    bg_highlight = hsl("#222222"),
-    selection = hsl("#424242"),
-    cursor = hsl("#FFFFFF"),
-    inactive = hsl("#585858"),
-    line_number = hsl("#585858"),
-    active_line_number = hsl("#FFFFFF"),
+    bg = hsl(palette.bg),
+    fg = hsl(palette.fg),
+    bg_highlight = hsl(palette.bg_highlight),
+    selection = hsl(palette.selection),
+    cursor = hsl(palette.cursor),
+    inactive = hsl(palette.inactive),
+    line_number = hsl(palette.line_number),
+    active_line_number = hsl(palette.active_line_number),
 
     -- syntax
-    keyword = hsl("#CCE1F1"),
-    control_flow = hsl("#75CAF2"),
-    type = hsl("#E1E0C8"),
-    interface = hsl("#75CAF2"),
-    constant = hsl("#F1D6DD"),
-    number = hsl("#E3A6DC"),
-    string = hsl("#CFE8B7"),
-    character = hsl("#CFE8B7"),
-    property = hsl("#DBDCF3"),
-    enum_member = hsl("#DBDCF3"),
-    boolean = hsl("#DBDCF3"),
-    macro = hsl("#D7E3CD"),
-    format_specifier = hsl("#DBDCF3"),
-    escape_sequence = hsl("#DBDCF3"),
-    lifetime = hsl("#75CAF2"),
-    comment = hsl("#FFFFFF"),
-    attribute = hsl("#949494"),
-    error = hsl("#F7A597"),
-    warning = hsl("#F7A597").lighten(20),
-    punct = hsl("#FECF5A"),
+    keyword = hsl(palette.keyword),
+    control_flow = hsl(palette.control_flow),
+    type = hsl(palette.type),
+    interface = hsl(palette.interface),
+    constant = hsl(palette.constant),
+    number = hsl(palette.number),
+    string = hsl(palette.string),
+    character = hsl(palette.character),
+    property = hsl(palette.property),
+    enum_member = hsl(palette.enum_member),
+    boolean = hsl(palette.boolean),
+    macro = hsl(palette.macro),
+    format_specifier = hsl(palette.format_specifier),
+    escape_sequence = hsl(palette.escape_sequence),
+    lifetime = hsl(palette.lifetime),
+    comment = hsl(palette.comment),
+    attribute = hsl(palette.attribute),
+    error = hsl(palette.error),
+    warning = hsl(palette.warning).lighten(20),
+    punct = hsl(palette.punct),
 
     -- special modifiers
     mutable = { underline = true },
     consuming = { italic = true },
-    unsafe = { fg = hsl("#F7A597"), bold = true },
-    public_decl = { fg = hsl("#E3A6DC") },
+    unsafe = { fg = hsl(palette.error), bold = true },
+    public_decl = { fg = hsl(palette.number) },
 }
 
 -- LSP/Linters mistakenly show `undefined global` errors in the spec, they may
 -- support an annotation like the following. Consult your server documentation.
 ---@diagnostic disable: undefined-global
+
 local theme = lush(function(injected_functions)
 local sym = injected_functions.sym
     return {
