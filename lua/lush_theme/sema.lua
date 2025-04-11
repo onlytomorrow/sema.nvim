@@ -49,6 +49,7 @@ local colors = {
     attribute = hsl("#949494"),
     error = hsl("#F7A597"),
     warning = hsl("#F7A597").lighten(20),
+    punct = hsl("#FECF5A"),
 
     -- special modifiers
     mutable = { underline = true },
@@ -274,6 +275,7 @@ local sym = injected_functions.sym
         sym"@number"              { Number }, -- Number
         sym"@boolean"             { Boolean }, -- Boolean
         sym"@float"               { Float }, -- Float
+        sym"@keyword.function"    { fg = colors.control_flow }, -- Function
         sym"@function"            { Function }, -- Function
         sym"@function.builtin"    { Function }, -- Special
         sym"@function.macro"      { Macro }, -- Macro
@@ -282,7 +284,9 @@ local sym = injected_functions.sym
         sym"@field"               { fg = colors.property }, -- Identifier
         sym"@property"            { fg = colors.property }, -- Identifier
         sym"@constructor"         { fg = colors.fg }, -- Special
+        sym"@keyword.conditional" { Conditional }, -- Conditional
         sym"@conditional"         { Conditional }, -- Conditional
+        sym"@keyword.repeat"      { Repeat }, -- Repeat
         sym"@repeat"              { Repeat }, -- Repeat
         sym"@label"               { Label }, -- Label
         sym"@operator"            { Operator }, -- Operator
